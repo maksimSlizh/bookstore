@@ -1,4 +1,6 @@
 export function CardMd({books}) {
+  console.log(books)
+
   return (
     <div className="card " style={{ width: '18rem' }}>
       <img src={books.image} className="card-img-top" alt="" />
