@@ -1,12 +1,12 @@
 import { Provider } from 'react-redux'
+import { RouterProvider } from 'react-router-dom'
 import { store } from './redux/store'
-import { MainLayout } from './components/Cards/MainLayout'
+import { router } from './router/index'
 export function App() {
   return (
     <Provider store={store}>
-      <MainLayout />
+      <RouterProvider router={router} />
     </Provider>
-
   )
 }
 
