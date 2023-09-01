@@ -1,6 +1,6 @@
 const searchEndpoint = '/search/'
 const newBooksEndpoint = '/new'
-const booksEndpoint = '/books/'
+const bookEndpoint = '/books/'
 
 
-export { searchEndpoint, newBooksEndpoint, booksEndpoint }
+export { searchEndpoint, newBooksEndpoint, bookEndpoint }

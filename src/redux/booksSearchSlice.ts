@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import { requestSearchBooks } from "../services/books"
-import { BooksState, Book, BooksResponse } from "../types/interfaces"
+import { BooksState } from "../types/interfaces"
 
 const fetchBooks = createAsyncThunk("books/fetchBooks", async ({ query = ''}: {query: string}) => {
   const { books } = await requestSearchBooks({query})

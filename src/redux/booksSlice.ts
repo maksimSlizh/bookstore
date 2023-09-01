@@ -1,7 +1,7 @@
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit'
 import { put } from 'redux-saga/effects'
 import { requestNewBooks } from '../services/books'
-import { BooksState, Book, BooksResponse } from '../types/interfaces'
+import { BooksState, Books, BooksResponse } from '../types/interfaces'
 
 const initialState: BooksState = {
   loading: false,
@@ -27,7 +27,7 @@ const booksSlice = createSlice({
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload
     },
-    getBooksSuccess(state, action: PayloadAction<Book[]>) {
+    getBooksSuccess(state, action: PayloadAction<Books[]>) {
       state.data = action.payload
     },
     setError(state, action: PayloadAction<string | null>) {
