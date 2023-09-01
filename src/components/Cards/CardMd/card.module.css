@@ -1,0 +1,32 @@
+.card {
+  padding-top: 10px;
+  width: 22.125rem;
+  height: 28.375rem;
+}
+
+.card__img{
+  margin: 0 auto;
+  width: 226px;
+  height: 264px;
+  display: flex;
+  justify-content: center;
+}
+
+.card__body{
+  margin-top: 20px;
+}
+
+.card__title{
+  height: 57.6px;
+  font-family: 'Bebas Neue', sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+.card__footer{
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+

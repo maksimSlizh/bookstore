@@ -1,4 +1,4 @@
-interface Book {
+export interface Book {
   image: string
   isbn13: string
   price: string
@@ -7,18 +7,18 @@ interface Book {
   url: string
 }
 
-interface BooksResponse {
+export interface BooksResponse {
   books: Book[]
 }
 
-interface BooksState {
+export interface BooksState {
   loading: boolean
   error: string | null
   data: Book[]
 }
 
-interface RootState {
+export interface RootState {
   books: BooksState
 }
 
-export { Book, BooksResponse, BooksState, RootState }
+// export { Book, BooksResponse, BooksState, RootState }

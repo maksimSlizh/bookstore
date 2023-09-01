@@ -13,10 +13,9 @@ export function* getBooksSaga() {
   yield put(setLoading(true))
   try {
     const payload: BooksResponse = yield requestNewBooks()
-    console.log(payload)
     yield put(getBooksSuccess(payload.books))
-  } catch (error) {
-    yield put(setError(error))
+  } catch (error: unknown) {
+    yield put(setError(error as string || null))
   }
   yield put(setLoading(false))
 }
