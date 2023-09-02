@@ -1,9 +1,9 @@
 import { CardMd } from '../Cards/CardMd'
-import { Book, BooksState } from '../../types/interfaces'
+import { Books, BooksState } from '../../types/interfaces'
 
 export function MainLayout({ data }: BooksState) {
   function renderCards() {
-    return data.map((books: Book) => (
+    return data.map((books: Books) => (
         <CardMd key={books.isbn13} book={books} />
     ))
   }

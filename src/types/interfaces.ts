@@ -27,6 +27,7 @@ export interface Book {
   subtitle: string
   authors: string
   publisher: string
+  language: string
   isbn10: string
   isbn13: string
   pages: string
