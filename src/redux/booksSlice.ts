@@ -9,10 +9,11 @@ const initialState: BooksState = {
   data: []
 }
 
-export function* getBooksSaga() {
+export function* getBooksSaga({ payload }: PayloadAction<number>) {
+  const currentPage = payload
   yield put(setLoading(true))
   try {
-    const payload: BooksResponse = yield requestNewBooks()
+    const payload: BooksResponse = yield requestNewBooks(currentPage)
     yield put(getBooksSuccess(payload.books))
   } catch (error: unknown) {
     yield put(setError(error as string || null))
@@ -31,7 +32,7 @@ const booksSlice = createSlice({
       state.data = action.payload
     },
     setError(state, action: PayloadAction<string | null>) {
-      state.error = action.payload
+      state.error = action.payload ? action.payload.message : null;
     }
   },
 })
