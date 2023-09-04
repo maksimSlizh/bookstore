@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import { Search } from "../Search/index"
 import { GrFavorite } from "react-icons/gr"
 import { SlBasket } from "react-icons/sl"
@@ -12,8 +13,8 @@ export function Header() {
           <Search />
         </div>
         <nav className="header__nav">
-          <a href="#"><GrFavorite size={20} className="text-dark" /></a>
-          <a href="#"><SlBasket size={20} className="text-dark" /></a>
+          <NavLink to="/favorite"><GrFavorite size={20} className="text-dark" /></NavLink>
+          <NavLink to="/basket"><SlBasket size={20} className="text-dark" /></NavLink>
           <a href="#"><AiOutlineUser size={20} className="text-dark" /></a>
         </nav>
       </header>

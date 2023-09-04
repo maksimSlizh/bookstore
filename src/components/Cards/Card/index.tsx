@@ -1,17 +1,33 @@
 import React, { useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { Book } from "../../types/interfaces"
 import style from "./card.module.css"
 import { MdFavoriteBorder } from 'react-icons/md'
 import { HiArrowLongLeft } from 'react-icons/hi2'
+import { FiFacebook, FiTwitter, FiMoreHorizontal } from 'react-icons/fi'
+import { addToBasket } from "../../../redux/basketSlice"
+import { addToFavorite, removeFromFavorite } from "../../../redux/favoriteSlice"
 
 export function Card({ data }: Book) {
-  const [isFavorite, setIsFavorite] = useState(false)
+  const favoriteData = useSelector((state) => state.favorite)
+  console.log(favoriteData)
+  const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
+  console.log(isFavorite)
+  const dispatch = useDispatch()
 
   const color = data.isbn13 ? data.isbn13.slice(-6) : '000'
-  const colorIcon = !isFavorite ? 'text-light' : ''
+  const colorIcon = isFavorite ? '' : 'text-light'
 
   const handleFavoriteToggle = () => {
-    setIsFavorite(!isFavorite)
+    if (isFavorite) {
+      dispatch(removeFromFavorite(data))
+    } else {
+      dispatch(addToFavorite(data))
+    }
+  }
+
+  const handleAddToBasket = () => {
+    dispatch(addToBasket(data))
   }
 
   return (
@@ -57,19 +73,21 @@ export function Card({ data }: Book) {
             </div>
           </div>
           <div className="d-flex flex-column start-0">
-            <button className={style.card__button}>Add to cart</button>
+            <button className={style.card__button} onClick={handleAddToBasket}>Add to cart</button>
             <a href="#" className={style.card__link}>Preview book</a>
           </div>
         </div>
       </div>
-      <div className="card__toggle">
-        <input type="radio" />
+      <div className="card__toggle d-flex">
+        <p>Description</p>
+        <p>Author</p>
+        <p>Reviews</p>
       </div>
-      <p className="card__text">{data.desc}</p>
-      <div className="card__social">
-        <a href="#" className="card__link">Facebook</a>
-        <a href="#" className="card__link">Twitter</a>
-        <a href="#" className="card__link">Instagram</a>
+      <p className={style.card__description}>{data.desc}</p>
+      <div className={style.card__social}>
+        <FiFacebook size={20} />
+        <FiTwitter size={20} />
+        <FiMoreHorizontal size={20} />
       </div>
     </div>
   )
