@@ -19,7 +19,7 @@ export const store = configureStore({
     booksSearch: booksSearchReducer,
     book: bookReducer,
     basket: basketReducer,
-    favorite: favoriteReducer
+    favorite: favoriteReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 })

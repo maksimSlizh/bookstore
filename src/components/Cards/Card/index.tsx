@@ -10,9 +10,7 @@ import { addToFavorite, removeFromFavorite } from "../../../redux/favoriteSlice"
 
 export function Card({ data }: Book) {
   const favoriteData = useSelector((state) => state.favorite)
-  console.log(favoriteData)
   const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
-  console.log(isFavorite)
   const dispatch = useDispatch()
 
   const color = data.isbn13 ? data.isbn13.slice(-6) : '000'

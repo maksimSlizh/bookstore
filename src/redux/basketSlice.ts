@@ -22,7 +22,7 @@ const basketSlice = createSlice({
       const result = state.filter((item) => item.isbn13 !== book.isbn13)
       localStorage.setItem("basket", JSON.stringify(result))
       return result
-    }
+    },
   },
 })
 

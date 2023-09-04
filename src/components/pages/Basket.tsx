@@ -1,22 +1,51 @@
-import { useSelector } from "react-redux"
-import { useState, useEffect } from "react"
-import { LongLayout } from "../Layout/LongLayout"
+import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { CardL } from "../Cards/CardL/index"
 
 export function Basket() {
-  const data = useSelector((state) => state.basket)
-  const [basketData, setBasketData] = useState([])
+  const data = useSelector((state) => state.basket);
+  const [basketData, setBasketData] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("basket"))
+    const storedData = JSON.parse(localStorage.getItem('basket'));
     if (storedData) {
-      setBasketData(storedData)
+      setBasketData(storedData);
     }
-  }, [data])
-  return (
-    <>
-      <a href="#">Back</a>
-      <h1>Basket</h1>
-      <LongLayout data={basketData} />
-    </>
-  )
-}
+  }, [data]);
+
+  useEffect(() => {
+    const calculateTotalPrice = () => {
+      let sum = 0;
+      basketData.forEach((item) => {
+        sum += parseFloat(item.price.substring(1));
+      });
+      return sum.toFixed(2);
+    };
+
+    const updatedTotalPrice = calculateTotalPrice();
+    setTotalPrice(updatedTotalPrice);
+  }, [basketData]);
+
+  const updatePrice = (amount) => {
+    setTotalPrice((prevPrice) => parseFloat(prevPrice) + amount);
+  };
+
+  function renderCards() {
+    return data.map((books: Books) => (
+      <CardL key={books.isbn13} data={books} onUpdatePrice={updatePrice} />
+    ))}
+
+    return (
+      <>
+        <a href="#">Back</a>
+        <h1>Basket</h1>
+        <div className="d-flex flex-column">
+          {renderCards()}
+        </div>
+        <div className="">
+          <p>Total price: {totalPrice}</p>
+        </div>
+      </>
+    );
+  }
