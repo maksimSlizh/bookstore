@@ -11,7 +11,7 @@ export function Search() {
   }
   function handleSubmit(e) {
     e.preventDefault()
-    navigate(`/search/${books}`)
+    navigate(`/search/${books}/1`)
     setBooks('')
   }
 

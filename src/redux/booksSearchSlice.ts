@@ -1,16 +1,17 @@
 import { createSlice, createAsyncThunk} from "@reduxjs/toolkit"
 import { requestSearchBooks } from "../services/books"
-import { BooksState } from "../types/interfaces"
+import { BooksState, Book } from "../types/interfaces"
 
-const fetchBooks = createAsyncThunk("books/fetchBooks", async ({ query = ''}: {query: string}) => {
-  const { books } = await requestSearchBooks({query})
-  console.log(books)
-  return books
+const fetchBooks = createAsyncThunk("books/fetchBooks", async ({ query = '', page = 0}: {query: string}) => {
+  const response = await requestSearchBooks({query, page})
+  return response
 })
 
 const initialState: BooksState = {
   loading: false,
   error: null,
+  page: 1,
+  total: 0,
   data: []
 }
 
@@ -25,7 +26,8 @@ const booksSearchSlice = createSlice({
       })
       .addCase(fetchBooks.fulfilled, (state, action) => {
         state.loading = false
-        state.data = action.payload
+        state.total = action.payload.total
+        state.data = action.payload.books
       })
       .addCase(fetchBooks.rejected, (state, action: unknown) => {
         state.loading = false

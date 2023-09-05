@@ -19,7 +19,7 @@ export const router = createBrowserRouter([
         element: <Main />
       },
       {
-        path: '/search/:query',
+        path: '/search/:query/:page',
         element: <ResultSearch />
       },
       {

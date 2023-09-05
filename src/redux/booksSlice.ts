@@ -1,7 +1,7 @@
 import { createSlice, createAction, PayloadAction } from '@reduxjs/toolkit'
 import { put } from 'redux-saga/effects'
 import { requestNewBooks } from '../services/books'
-import { BooksState, Books, BooksResponse } from '../types/interfaces'
+import { BooksState, Book, BooksResponse } from '../types/interfaces'
 
 const initialState: BooksState = {
   loading: false,
@@ -10,7 +10,7 @@ const initialState: BooksState = {
 }
 
 export function* getBooksSaga({ payload }: PayloadAction<number>) {
-  const currentPage = payload
+  const currentPage: number = payload
   yield put(setLoading(true))
   try {
     const payload: BooksResponse = yield requestNewBooks(currentPage)
@@ -28,11 +28,11 @@ const booksSlice = createSlice({
     setLoading(state, action: PayloadAction<boolean>) {
       state.loading = action.payload
     },
-    getBooksSuccess(state, action: PayloadAction<Books[]>) {
+    getBooksSuccess(state, action: PayloadAction<Book[]>) {
       state.data = action.payload
     },
     setError(state, action: PayloadAction<string | null>) {
-      state.error = action.payload ? action.payload.message : null;
+      state.error = action.payload ?? null;
     }
   },
 })

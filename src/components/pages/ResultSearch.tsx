@@ -1,23 +1,36 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import { fetchBooks } from '../../redux/booksSearchSlice'
 import { MainLayout } from '../Layout/MainLayout'
-import { Pagination } from '../Pagination'
 
 export function ResultSearch() {
-  const { data } = useSelector((state) => state.booksSearch)
-  const [currentPage, setCurrentPage]: [number, Function] = useState(1)
+  const { data, total } = useSelector((state) => state.booksSearch)
   const dispatch = useDispatch()
   const { query } = useParams()
+  const [page, setPage] = useState(1)
   useEffect(() => {
-    dispatch(fetchBooks({ query }))
-  }, [dispatch, query])
-  const { paginatedData, renderPagination } = Pagination(data, currentPage, setCurrentPage)
+    dispatch(fetchBooks({ query, page }))
+  }, [dispatch, query, page])
+
+  function renderPagination() {
+    const pages = []
+    if(total % 10 === 0) {
+      for (let i = 1; i <= total / 10; i++) {
+        pages.push(i)
+      }
+    }
+    for (let i = 1; i <= Math.ceil(total / 10); i++) {
+      pages.push(i)
+    }
+    return pages.map(page => {
+      return <li key={page} className={`page-item ${page === page ? 'active' : ''}`}><NavLink className="page-link" onClick={() => setPage(page)} to={`/search/${query}/${page}`}>{page}</NavLink></li>
+    })
+  }
   return (
     <>
       <h1>Result {query}</h1>
-      <MainLayout data={paginatedData} />
+      <MainLayout data={data} />
       <ul className="pagination d-flex gap-2">
         {renderPagination()}
       </ul>
