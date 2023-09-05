@@ -1,25 +1,25 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { Book } from "../types/interfaces"
 
-const initialState = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")) : []
+const initialState = localStorage.getItem("basket") ? JSON.parse(localStorage.getItem("basket")!) : []
 
 const basketSlice = createSlice({
   name: "basket",
   initialState,
   reducers: {
-    addToBasket: (state, action) => {
+    addToBasket: (state, action: PayloadAction<Book>) => {
       const book = action.payload
-      const existingBook = state.find(item => item.isbn13 === book.isbn13)
+      const existingBook = state.find((item: Book) => item.isbn13 === book.isbn13)
       if (!existingBook) {
         const result = [...state, book]
         localStorage.setItem("basket", JSON.stringify(result))
-        console.log(result)
         return result
       }
       return state
     },
     removeFromBasket: (state, action) => {
       const book = action.payload
-      const result = state.filter((item) => item.isbn13 !== book.isbn13)
+      const result = state.filter((item: Book) => item.isbn13 !== book.isbn13)
       localStorage.setItem("basket", JSON.stringify(result))
       return result
     },

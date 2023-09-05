@@ -8,8 +8,8 @@ export const requestNewBooks = async (сurrentPage: number): Promise<BooksRespon
   return data
 }
 
-export const requestSearchBooks = async ({ query = '', page = ''}: { query: string,}): Promise<Book> => {
-  const { data }: AxiosResponse<Book> = await client.get(searchEndpoint + query + `/${page}`)
+export const requestSearchBooks = async ({ query = '', page = 1}: { query: string, page: number}): Promise<BooksResponse> => {
+  const { data }: AxiosResponse<BooksResponse> = await client.get(searchEndpoint + query + `/${page}`)
   return data
 }
 

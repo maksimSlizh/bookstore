@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams } from 'react-router-dom'
 import { fetchBooks } from '../../redux/booksSearchSlice'
@@ -24,7 +24,7 @@ export function ResultSearch() {
       pages.push(i)
     }
     return pages.map(page => {
-      return <li key={page} className={`page-item ${page === page ? 'active' : ''}`}><NavLink className="page-link" onClick={() => setPage(page)} to={`/search/${query}/${page}`}>{page}</NavLink></li>
+      return <li key={Math.random()} className={`page-item ${page === page ? 'active' : ''}`}><NavLink className="page-link" onClick={() => setPage(page)} to={`/search/${query}/${page}`}>{page}</NavLink></li>
     })
   }
   return (
