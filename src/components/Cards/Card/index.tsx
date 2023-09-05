@@ -1,12 +1,12 @@
-import React, { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { Book } from "../../types/interfaces"
-import style from "./card.module.css"
+import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Book } from '../../types/interfaces'
+import style from './card.module.css'
 import { MdFavoriteBorder } from 'react-icons/md'
 import { HiArrowLongLeft } from 'react-icons/hi2'
 import { FiFacebook, FiTwitter, FiMoreHorizontal } from 'react-icons/fi'
-import { addToBasket } from "../../../redux/basketSlice"
-import { addToFavorite, removeFromFavorite } from "../../../redux/favoriteSlice"
+import { addToCart } from '../../../redux/cartSlice'
+import { addToFavorite, removeFromFavorite } from '../../../redux/favoriteSlice'
 
 export function Card({ data }: Book) {
   const favoriteData = useSelector((state) => state.favorite)
@@ -25,7 +25,7 @@ export function Card({ data }: Book) {
   }
 
   const handleAddToBasket = () => {
-    dispatch(addToBasket(data))
+    dispatch(addToCart(data))
   }
 
   return (

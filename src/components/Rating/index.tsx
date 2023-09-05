@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { AiFillStar } from 'react-icons/ai';
+import React, { useState } from 'react'
+import { AiFillStar } from 'react-icons/ai'
 
 export function Rating() {
   return (

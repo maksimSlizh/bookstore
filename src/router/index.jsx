@@ -3,10 +3,10 @@ import { Layout } from '../components/Layout/index'
 import { Main } from '../components/pages/Main'
 import { ResultSearch } from '../components/pages/ResultSearch'
 import { BookPage } from '../components/pages/BookPage'
-import { Basket } from '../components/pages/Basket'
+import { Cart } from '../components/pages/Cart'
 import { Favorite } from '../components/pages/Favorite'
 import { Auth } from '../components/pages/Auth'
-import { Accaount } from '../components/Auth/Account/Accaount'
+import { Account } from '../components/Auth/Account'
 import { SignIn } from '../components/Auth/SignIn'
 import { SignUp } from '../components/Auth/SignUp'
 
@@ -27,8 +27,8 @@ export const router = createBrowserRouter([
         element: <BookPage />
       },
       {
-        path: '/basket',
-        element: <Basket />
+        path: '/cart',
+        element: <Cart />
       },
       {
         path: '/favorite',
@@ -39,7 +39,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: '/account',
-            element: <Accaount />
+            element: <Account />
           },
           {
             path: '/signin',

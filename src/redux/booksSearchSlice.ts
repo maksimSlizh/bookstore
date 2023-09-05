@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk, PayloadAction} from "@reduxjs/toolkit"
-import { requestSearchBooks } from "../services/books"
-import { BooksState, BooksResponse } from "../types/interfaces"
+import { createSlice, createAsyncThunk, PayloadAction} from '@reduxjs/toolkit'
+import { requestSearchBooks } from '../services/books'
+import { BooksState, BooksResponse } from '../types/interfaces'
 
-const fetchBooks = createAsyncThunk("books/fetchBooks", async ({ query = '', page = 1}: {query: string, page: number}) => {
+const fetchBooks = createAsyncThunk('books/fetchBooks', async ({ query = '', page = 1}: {query: string, page: number}) => {
   const response = await requestSearchBooks({query, page})
   return response
 })
@@ -16,7 +16,7 @@ const initialState: BooksState = {
 }
 
 const booksSearchSlice = createSlice({
-  name: "booksSearch",
+  name: 'booksSearch',
   initialState,
   reducers: {},
   extraReducers: builder => {

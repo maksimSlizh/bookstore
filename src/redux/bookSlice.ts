@@ -1,8 +1,8 @@
-import { createSlice, createAsyncThunk, PayloadAction, SliceCaseReducers } from "@reduxjs/toolkit"
-import { requestBook } from "../services/books"
-import { BookState, Book } from "../types/interfaces"
+import { createSlice, createAsyncThunk, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
+import { requestBook } from '../services/books'
+import { BookState, Book } from '../types/interfaces'
 
-const fetchBook = createAsyncThunk<Book, string>("book/fetchBook", async (isbn13: string) => await requestBook(isbn13))
+const fetchBook = createAsyncThunk<Book, string>('book/fetchBook', async (isbn13: string) => await requestBook(isbn13))
 
 const initialState: BookState = {
   loading: false,
@@ -11,7 +11,7 @@ const initialState: BookState = {
 }
 
 const bookSlice = createSlice<BookState, SliceCaseReducers<BookState>>({
-  name: "book",
+  name: 'book',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -21,7 +21,6 @@ const bookSlice = createSlice<BookState, SliceCaseReducers<BookState>>({
       })
       .addCase(fetchBook.fulfilled, (state, action) => {
         state.loading = false
-        console.log(action.payload)
         state.data = action.payload
       })
       .addCase(fetchBook.rejected, (state, action) => {

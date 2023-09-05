@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom"
-import { Book } from "../../../types/interfaces"
-import style from "./card.module.css"
+import { NavLink } from 'react-router-dom'
+import { Book } from '../../../types/interfaces'
+import style from './card.module.css'
 
 export function CardMd({ book }: { book: Book }) {
   const color = book.isbn13.slice(-6)

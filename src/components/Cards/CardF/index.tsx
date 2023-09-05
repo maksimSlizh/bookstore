@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux"
-import { removeFromFavorite } from "../../../redux/favoriteSlice"
+import { useDispatch } from 'react-redux'
+import { removeFromFavorite } from '../../../redux/favoriteSlice'
 
 export function CardFavorite({ data }) {
   const dispatch = useDispatch()

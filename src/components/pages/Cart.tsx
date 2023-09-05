@@ -1,31 +1,31 @@
-import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import { CardL } from "../Cards/CardL/index"
+import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { CardL } from '../Cards/CardL/index'
 
-export function Basket() {
-  const data = useSelector((state) => state.basket);
-  const [basketData, setBasketData] = useState([]);
-  const [totalPrice, setTotalPrice] = useState(0);
+export function Cart() {
+  const data = useSelector((state) => state.cart)
+  const [basketData, setBasketData] = useState([])
+  const [totalPrice, setTotalPrice] = useState(0)
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('basket'));
+    const storedData = JSON.parse(localStorage.getItem('cart')!)
     if (storedData) {
-      setBasketData(storedData);
+      setBasketData(storedData)
     }
-  }, [data]);
+  }, [data])
 
   useEffect(() => {
     const calculateTotalPrice = () => {
-      let sum = 0;
+      let sum = 0
       basketData.forEach((item) => {
-        sum += parseFloat(item.price.substring(1));
-      });
-      return sum.toFixed(2);
-    };
+        sum += parseFloat(item.price.substring(1))
+      })
+      return sum.toFixed(2)
+    }
 
-    const updatedTotalPrice = calculateTotalPrice();
-    setTotalPrice(updatedTotalPrice);
-  }, [basketData]);
+    const updatedTotalPrice = calculateTotalPrice()
+    setTotalPrice(updatedTotalPrice)
+  }, [basketData])
 
   const updatePrice = (amount) => {
     setTotalPrice((prevPrice) => parseFloat(prevPrice) + amount);

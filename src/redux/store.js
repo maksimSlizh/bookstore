@@ -4,7 +4,7 @@ import { takeEvery } from 'redux-saga/effects'
 import { GET_BOOKS, booksReducer, getBooksSaga } from './booksSlice'
 import { booksSearchReducer } from './booksSearchSlice.ts'
 import { bookReducer } from './bookSlice'
-import { basketReducer } from './basketSlice'
+import { cartReducer } from './cartSlice'
 import { favoriteReducer } from './favoriteSlice'
 
 const sagaMiddleware = createSagaMiddleware()
@@ -18,7 +18,7 @@ export const store = configureStore({
     books: booksReducer,
     booksSearch: booksSearchReducer,
     book: bookReducer,
-    basket: basketReducer,
+    cart: cartReducer,
     favorite: favoriteReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),

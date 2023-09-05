@@ -1,20 +1,19 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { removeFromBasket } from '../../../redux/basketSlice'
+import { removeFromCart } from '../../../redux/cartSlice'
 import { useEffect } from 'react'
 
 export function CardL({ data, onUpdatePrice }) {
   const dispatch = useDispatch()
   const [count, setCount] = useState(1)
   const price = parseFloat(data.price.substring(1)) * count
-  console.log(price)
   const [value, setValue] = useState(data.price.substring(1))
 
   useEffect(() => {
     setValue(price)
   },[price])
   const handleRemoveFromBasket = () => {
-    dispatch(removeFromBasket(data))
+    dispatch(removeFromCart(data))
   }
 
   const handleMinus = () => {

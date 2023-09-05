@@ -1,19 +1,18 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { Book } from "../types/interfaces"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { Book } from '../types/interfaces'
 
-const initialState = localStorage.getItem("favorite") ? JSON.parse(localStorage.getItem("favorite")!) : []
+const initialState = localStorage.getItem('favorite') ? JSON.parse(localStorage.getItem('favorite')!) : []
 
 const favoriteSlice = createSlice({
-  name: "favorite",
+  name: 'favorite',
   initialState,
   reducers: {
     addToFavorite: (state, action: PayloadAction<Book>) => {
-      console.log(state)
       const book = action.payload
       const existingBook = state.find((item: Book)=> item.isbn13 === book.isbn13)
       if (!existingBook) {
         state.push(book)
-        localStorage.setItem("favorite", JSON.stringify(state))
+        localStorage.setItem('favorite', JSON.stringify(state))
       }
     },
     removeFromFavorite: (state, action: PayloadAction<Book>) => {
@@ -22,7 +21,7 @@ const favoriteSlice = createSlice({
       const existingIndex = state.find((item: Book) => item.isbn13 === bookId)
       if (existingIndex) {
         const result = state.filter((item: Book) => item.isbn13 !== book.isbn13)
-        localStorage.setItem("favorite", JSON.stringify(result))
+        localStorage.setItem('favorite', JSON.stringify(result))
         return result
       }
     },

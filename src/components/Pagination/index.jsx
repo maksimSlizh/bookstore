@@ -1,15 +1,15 @@
 export function Pagination(data, currentPage, setCurrentPage) {
-  const totalPages = Math.ceil(data.length / 6);
-  const paginatedData = data.slice((currentPage - 1) * 6, currentPage * 6);
+  const totalPages = Math.ceil(data.length / 6)
+  const paginatedData = data.slice((currentPage - 1) * 6, currentPage * 6)
 
   const handlePage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+    setCurrentPage(pageNumber)
+  }
 
   function renderPagination() {
-    const pageNumbers = [];
+    const pageNumbers = []
     for (let i = 1; i <= totalPages; i++) {
-      pageNumbers.push(i);
+      pageNumbers.push(i)
     }
     return pageNumbers.map((number) => {
       return (
@@ -20,8 +20,8 @@ export function Pagination(data, currentPage, setCurrentPage) {
         >
           {number}
         </button>
-      );
-    });
+      )
+    })
   }
 
   return {

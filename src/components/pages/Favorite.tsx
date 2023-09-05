@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux"
-import { useState, useEffect } from "react"
-import { FavoriteLayout } from "../Layout/FavoriteLayout"
+import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { FavoriteLayout } from '../Layout/FavoriteLayout'
 
 export function Favorite() {
   const data = useSelector((state) => state.favorite)
