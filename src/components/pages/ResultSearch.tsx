@@ -15,11 +15,6 @@ export function ResultSearch() {
 
   function renderPagination() {
     const pages = []
-    if(total % 10 === 0) {
-      for (let i = 1; i <= total / 10; i++) {
-        pages.push(i)
-      }
-    }
     for (let i = 1; i <= Math.ceil(total / 10); i++) {
       pages.push(i)
     }

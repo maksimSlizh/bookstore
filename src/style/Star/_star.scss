@@ -1,0 +1,12 @@
+.star__input {
+  display: none;
+}
+
+.star__label {
+  cursor: pointer;
+}
+
+.star__input:checked + .star__label,
+.star__input:checked + .star__label ~ .star__label {
+  color: #ffc107;
+}
