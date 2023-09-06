@@ -1,6 +1,8 @@
 import { useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { CardL } from '../Cards/CardL/index'
+import { HiArrowLongLeft } from 'react-icons/hi2'
+import { NavLink } from 'react-router-dom'
 
 export function Cart() {
   const data = useSelector((state) => state.cart)
@@ -29,23 +31,49 @@ export function Cart() {
 
   const updatePrice = (amount) => {
     setTotalPrice((prevPrice) => parseFloat(prevPrice) + amount);
-  };
+  }
 
   function renderCards() {
     return data.map((books: Books) => (
       <CardL key={books.isbn13} data={books} onUpdatePrice={updatePrice} />
     ))}
 
+    function handleSubmit(e) {
+      e.preventDefault()
+      const vat = (totalPrice * 0.18).toFixed(2)
+      const total = (totalPrice * 1.18).toFixed(2)
+
+      const form = {
+        totalPrice,
+        vat,
+        total
+      }
+    }
+
     return (
       <>
-        <a href="#">Back</a>
-        <h1>Basket</h1>
+        <NavLink to={`/`}><HiArrowLongLeft size={30} style={{ transform: "scale(1.5)", marginLeft: "5px", textDecoration: "none", color: "#313037", marginTop: "40px" }} /></NavLink>
+        <h1 className="title">Basket</h1>
         <div className="d-flex flex-column">
           {renderCards()}
         </div>
-        <div className="">
-          <p>Total price: {totalPrice}</p>
+        <div className="cart mt-5 mb-5">
+          <form onSubmit={handleSubmit}>
+          <div className="cart__item">
+            <p className="cart__item-text">Sum total</p>
+            <p className="cart__item-value">{totalPrice}</p>
+          </div>
+          <div className="cart__item">
+            <p className="cart__item-text">Vat</p>
+            <p className="cart__item-value">{(totalPrice * 0.18).toFixed(2)}</p>
+          </div>
+          <div className="cart__item">
+            <p className="cart__item-total">Total</p>
+            <p className="cart__item-total">{(totalPrice * 1.18).toFixed(2)}</p>
+          </div>
+          <button className="cart__button">Check out</button>
+          </form>
         </div>
       </>
-    );
+    )
   }
