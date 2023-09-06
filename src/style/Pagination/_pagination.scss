@@ -1,0 +1,28 @@
+.pagination {
+  li {
+    &.active {
+      &.page-item {
+        a.page-link {
+          color: black;
+          background-color: inherit;
+          border: none;
+
+        }
+      }
+    }
+    &.disabled {
+      a.page-link {
+        color: rgb(160, 160, 160);
+        background-color: inherit;
+        border-color: none;
+        border: none;
+      }
+    }
+  }
+  a.page-link {
+    color: rgb(185, 185, 185);
+    background-color: inherit;
+    border-color: none;
+    border: none;
+  }
+}

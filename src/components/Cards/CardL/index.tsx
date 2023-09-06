@@ -1,7 +1,6 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../../../redux/cartSlice'
-import { useEffect } from 'react'
 
 export function CardL({ data, onUpdatePrice }) {
   const dispatch = useDispatch()

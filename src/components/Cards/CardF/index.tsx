@@ -1,5 +1,7 @@
+import React from 'react'
 import { useDispatch } from 'react-redux'
 import { removeFromFavorite } from '../../../redux/favoriteSlice'
+import { Rating } from '../../Rating'
 
 export function CardFavorite({ data }) {
   const dispatch = useDispatch()
@@ -17,9 +19,7 @@ export function CardFavorite({ data }) {
           <p className="card__info">{data.authors} {data.publisher}</p>
           <div className="card__value">
             <h2 className="card__price">{data.price}</h2>
-            <div className="card__rating">
-              <input type="text" />
-            </div>
+            <Rating />
           </div>
         </div>
         <div className="col">

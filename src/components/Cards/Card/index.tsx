@@ -7,11 +7,13 @@ import { HiArrowLongLeft } from 'react-icons/hi2'
 import { FiFacebook, FiTwitter, FiMoreHorizontal } from 'react-icons/fi'
 import { addToCart } from '../../../redux/cartSlice'
 import { addToFavorite, removeFromFavorite } from '../../../redux/favoriteSlice'
+import { Rating } from '../../Rating'
 
 export function Card({ data }: Book) {
   const favoriteData = useSelector((state) => state.favorite)
   const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
   const dispatch = useDispatch()
+  console.log(data.rating)
 
   const color = data.isbn13 ? data.isbn13.slice(-6) : '000'
   const colorIcon = isFavorite ? '' : 'text-light'
@@ -48,7 +50,7 @@ export function Card({ data }: Book) {
             <br />
             <div className={style.card__value}>
               <div className="card__price">{data.price}</div>
-              <input type="radio" />
+              <Rating rating={data.rating} />
             </div>
             <div className={style.card__feature}>
               <div className={style.card__feature_item}>

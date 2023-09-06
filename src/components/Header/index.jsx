@@ -7,15 +7,15 @@ import { AiOutlineUser } from 'react-icons/ai'
 export function Header() {
   return (
     <>
-      <header className="header">
+      <header className="header mt-3">
         <h1 className="header__title">Bookstore</h1>
         <div className="header__search">
           <Search />
         </div>
         <nav className="header__nav">
-          <NavLink to="/favorite"><GrFavorite size={20} className="text-dark" /></NavLink>
-          <NavLink to="/cart"><SlBasket size={20} className="text-dark" /></NavLink>
-          <a href="#"><AiOutlineUser size={20} className="text-dark" /></a>
+          <NavLink to="/favorite"><GrFavorite size={24} className="text-dark" /></NavLink>
+          <NavLink to="/cart"><SlBasket size={24} className="text-dark" /></NavLink>
+          <NavLink to="/signin"><AiOutlineUser size={24} className="text-dark" /></NavLink>
         </nav>
       </header>
     </>
