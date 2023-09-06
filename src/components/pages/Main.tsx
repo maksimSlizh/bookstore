@@ -38,6 +38,7 @@ export function Main() {
         <li
           key={number}
           className={`page-item ${number === currentPage ? 'active' : ''}`}
+          style={{ cursor: 'pointer' }}
           onClick={() => handlePage(number)}
         >
           <a className="page-link">{number}</a>

@@ -20,7 +20,7 @@ export function CardMd({ book }: { book: Book }) {
       </NavLink>
       <div className={style.card__footer}>
           <div className={style.card__footer_item}>{book.price}</div>
-          <Rating rating={book.rating || '4'} />
+          <Rating rating={book.rating || '2'} isbn13={book.isbn13} />
         </div>
     </div>
   )
