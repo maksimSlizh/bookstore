@@ -27,11 +27,11 @@ export function CardL({ data, onUpdatePrice }) {
   };
 
   return (
-    <div className="card">
-      <div className="col">
+    <div className="card d-flex">
+      <div className="col-3">
         <img src={data.image} className="card__img" alt="" />
       </div>
-      <div className="col">
+      <div className="col-9">
         <div className="col">
           <h3 className="card__title">{data.title}</h3>
           <p className="card__info">{data.authors} {data.publisher}</p>
