@@ -1,0 +1,66 @@
+.auth {
+  max-width: 544px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 20px 0;
+  border: 1px solid #E7E7E7;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #E7E7E7;
+
+  }
+
+  &__link {
+    text-align: center;
+    padding-bottom: 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    width: calc(100% / 2 - 20px);
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    text-decoration: none;
+    color: #A8A8A8;
+
+    &:active {
+      border-bottom: 2px solid #313037;
+      color: #313037;
+    }
+  }
+
+  &__body {
+    padding: 0 40px;
+  }
+
+  &__label {
+    margin-bottom: 10px;
+    color: #313037;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  &__forgot {
+    color: #313037;
+    font-size: 14px;
+    line-height: 32px;
+    text-decoration: none;
+  }
+
+  &__button {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    line-height: 24px;
+    font-weight: 500;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 16px 0;
+    background-color: #313037;
+    color: #FFFFFF;
+  }
+}
+
+.active {
+  border-bottom: 2px solid #313037;
+  color: #313037;
+}

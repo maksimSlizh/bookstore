@@ -27,31 +27,32 @@ export function SignUp() {
     setPassword('')
   }
   return (
-    <div className="d-flex justify-content-center flex-column" style={{width: '544px', margin: '0 auto'}}>
-      <div className="d-flex justify-content-between">
-        <NavLink to={'/signin'} style={{margin: '0 auto'}}>SingIn</NavLink>
-        <NavLink to={'/signup'} style={{margin: '0 auto'}}>SingUp</NavLink>
+    <div className="auth">
+      <div className="auth__item">
+        <NavLink to={'/signin'} className={"auth__link"}>Sing In</NavLink>
+        <NavLink to={'/signup'} className={"auth__link"}>Sing Up</NavLink>
       </div>
-      <form className="form d-flex flex-column"  onSubmit={handleSubmit}>
-      <div className="col">
-        <label className="form-label">Name</label>
-        <input type="text" className="form-control" placeholder="" onChange={handleChangeName} />
+      <div className="auth__body">
+        <form className="form d-flex flex-column" onSubmit={handleSubmit}>
+          <div className="col mt-3">
+            <label className="auth__label">Name</label>
+            <input type="text" className="form-control p-3" placeholder="Your name" onChange={handleChangeName} />
+          </div>
+          <div className="col mt-3">
+            <label className="auth__label">Email</label>
+            <input type="email" className="form-control p-3" onChange={handleChangeEmail} placeholder="Your email" />
+          </div>
+          <div className="col mt-3">
+            <label className="auth__label">Password</label>
+            <input type="password" className="form-control p-3" onChange={handleChangePassword} placeholder="Your password" />
+          </div>
+          <div className="col mt-3">
+            <label className="auth__label">Confirm Password</label>
+            <input type="password" className="form-control p-3" placeholder="Confirm password" />
+          </div>
+          <button className="auth__button mt-5">SingIn</button>
+        </form>
       </div>
-        <div className="col">
-          <label className="form-label">Email</label>
-          <input type="email" className="form-control" onChange={handleChangeEmail} />
-        </div>
-        <div className="col">
-          <label className="form-label">Password</label>
-          <input type="password" className="form-control" onChange={handleChangePassword} />
-        </div>
-        <div className="col">
-          <label className="form-label">Confirm Password</label>
-          <input type="password" className="form-control" />
-        </div>
-        <a href="">Forgot password?</a>
-        <button>SingIn</button>
-      </form>
     </div>
   )
 }

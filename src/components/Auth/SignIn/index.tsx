@@ -5,6 +5,12 @@ export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [isActive, setIsActive] = useState(true);
+
+  function handleLinkClick() {
+    setIsActive(!isActive);
+  }
+
   function handleChangeEmail(e) {
     setEmail(e.target.value)
   }
@@ -21,23 +27,31 @@ export function SignIn() {
     setPassword('')
   }
   return (
-    <div className="d-flex justify-content-center flex-column" style={{width: '544px', margin: '0 auto'}}>
-      <div className="d-flex justify-content-between">
-        <NavLink to={'/signin'} style={{margin: '0 auto'}}>SingIn</NavLink>
-        <NavLink to={'/signup'} style={{margin: '0 auto'}}>SingUp</NavLink>
+    <div className="auth">
+      <div className="auth__item">
+      <NavLink
+          className={`auth__link ${isActive ? "active" : ""}`}
+          to={'/signin'}
+          onClick={handleLinkClick}
+        >
+          Sing In
+        </NavLink>
+        <NavLink className={"auth__link"} to={'/signup'}>Sing Up</NavLink>
       </div>
-      <form className="form d-flex flex-column"  onSubmit={handleSubmit}>
-        <div className="col">
-          <label className="form-label">Email</label>
-          <input type="email" className="form-control" onChange={handleChangeEmail} />
-        </div>
-        <div className="col">
-          <label className="form-label">Password</label>
-          <input type="password" className="form-control" onChange={handleChangePassword} />
-        </div>
-        <a href="">Forgot password?</a>
-        <button>SingIn</button>
-      </form>
+      <div className="auth__body">
+        <form className="form d-flex flex-column" onSubmit={handleSubmit}>
+          <div className="col mt-3">
+            <label className="auth__label">Email</label>
+            <input type="email" className="form-control p-3" onChange={handleChangeEmail} placeholder='Your email' />
+          </div>
+          <div className="col mt-3">
+            <label className="auth__label">Password</label>
+            <input type="password" className="form-control p-3" onChange={handleChangePassword} placeholder='Your password' />
+          </div>
+          <a href="#" className="auth__forgot mt-2">Forgot password ?</a>
+          <button className="auth__button mt-5">Sing In</button>
+        </form>
+      </div>
     </div>
   )
 }
