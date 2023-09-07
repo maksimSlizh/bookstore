@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { ThunkDispatch } from 'redux-thunk'
 import { getBooks } from '../../redux/booksSlice'
 import { MainLayout } from '../Layout/MainLayout'
-import { RootState } from '../../types/interfaces'
+import { RootState, Book } from '../../types/interfaces'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 export function Main() {
   const { data } = useSelector((state: RootState) => state.books)
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<Book, number, any>>()
   const [currentPage, setCurrentPage]: [number, Function] = useState(1)
   const totalPages = Math.ceil(data.length / 6)
   const paginatedData = data.slice((currentPage - 1) * 6, currentPage * 6)

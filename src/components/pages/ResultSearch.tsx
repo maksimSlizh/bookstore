@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useParams, useNavigate } from 'react-router-dom'
+import { ThunkDispatch } from 'redux-thunk'
+import { AnyAction } from 'redux'
 import { fetchBooks } from '../../redux/booksSearchSlice'
 import { MainLayout } from '../Layout/MainLayout'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
@@ -8,8 +10,8 @@ import { RootState } from '../../types/interfaces'
 
 export function ResultSearch() {
   const { data, total } = useSelector((state: RootState) => state.booksSearch)
-  const dispatch = useDispatch()
-  const { query } = useParams()
+const dispatch = useDispatch<ThunkDispatch<RootState, string | number, AnyAction>>()
+  const { query = '' } = useParams()
   const navigate = useNavigate()
   const [page, setPage] = useState(Number('1'))
 
