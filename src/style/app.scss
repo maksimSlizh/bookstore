@@ -1,7 +1,10 @@
+
 @import "bootstrap/scss/bootstrap";
 
 // Fonts
 @import '@fontsource/bebas-neue';
+
+
 
 @import "./Header/header.scss";
 @import "./Search/searchForm.scss";
@@ -13,3 +16,6 @@
 @import "./Cart/cart.scss";
 @import "./Auth/auth.scss";
 @import "./Auth/account.scss";
+
+
+@import "./CustomBootstrap/custom-bootstrap.scss";

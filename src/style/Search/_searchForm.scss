@@ -3,6 +3,12 @@
   border: 1px solid #E7E7E7;
   width: 100%;
   padding: 10px;
+
+  &:focus-within {
+    box-shadow: 0 0 0 4px #c3bbbb;
+    transition: 0.3s ease;
+  }
+
   &__input {
     width: 100%;
     border: none;

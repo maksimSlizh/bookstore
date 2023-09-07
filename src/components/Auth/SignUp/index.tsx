@@ -5,6 +5,11 @@ export function SignUp() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [isActive, setIsActive] = useState(true)
+
+  function handleLinkClick() {
+    setIsActive(!isActive)
+  }
 
   function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value)
@@ -30,7 +35,13 @@ export function SignUp() {
     <div className="auth">
       <div className="auth__item">
         <NavLink to={'/signin'} className={"auth__link"}>Sing In</NavLink>
-        <NavLink to={'/signup'} className={"auth__link"}>Sing Up</NavLink>
+        <NavLink
+          className={`auth__link ${isActive ? "auth__active" : ""}`}
+          to={'/signup'}
+          onClick={handleLinkClick}
+        >
+          Sing Up
+        </NavLink>
       </div>
       <div className="auth__body">
         <form className="form d-flex flex-column" onSubmit={handleSubmit}>

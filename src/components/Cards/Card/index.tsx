@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Book, RootState } from '../../types/interfaces'
+import { NavLink } from 'react-router-dom'
+import { Book, RootState } from '../../../types/interfaces'
+import { CardProps } from '../../../types/type'
 import style from './card.module.css'
 import { MdFavoriteBorder } from 'react-icons/md'
 import { HiArrowLongLeft } from 'react-icons/hi2'
@@ -9,11 +11,10 @@ import { addToCart } from '../../../redux/cartSlice'
 import { addToFavorite, removeFromFavorite } from '../../../redux/favoriteSlice'
 import { Rating } from '../../Rating'
 import { MdKeyboardArrowDown } from 'react-icons/md'
-import { NavLink } from 'react-router-dom'
 
-export function Card({ data }: Book) {
+export function Card({ data }: CardProps) {
   const favoriteData = useSelector((state: RootState) => state.favorite)
-  const isFavorite = favoriteData.some((book: Book) => book.isbn13 === data.isbn13)
+  const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
   const dispatch = useDispatch()
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState('1')
@@ -152,12 +153,12 @@ export function Card({ data }: Book) {
           <p className={style.card__text}>{data.authors}</p>
         )}
         {selectedCard === '3' && (
-          <p className={style.card__text}>{data.review}</p>
+          <p className={style.card__text}>Rating: {data.rating}</p>
         )}
       </div>
       <div className={style.card__social}>
-        <a href="#" className={style.card__social_link}><FiFacebook size={22} /></a>
-        <a href="#" className={style.card__social_link}><FiTwitter size={22} /></a>
+        <a href="https://www.facebook.com/" className={style.card__social_link}><FiFacebook size={22} /></a>
+        <a href="https://twitter.com/" className={style.card__social_link}><FiTwitter size={22} /></a>
         <a href="#" className={style.card__social_link}><FiMoreHorizontal size={22} /></a>
       </div>
     </div>

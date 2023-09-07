@@ -42,7 +42,7 @@ export interface RootState {
   book: {
     loading: boolean,
     error: null | Error,
-    data: Book[]
+    data: Book
   },
   books: {
     loading: boolean,

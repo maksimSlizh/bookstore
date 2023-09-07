@@ -53,11 +53,11 @@ export function Main() {
       <h1 className="title">New release books</h1>
       <MainLayout data={paginatedData} />
       <ul className="pagination d-flex gap-2 mt-4 justify-content-between">
-        <li onClick={handlePrevPage} className={`page-item ${currentPage === 1 ? 'disabled' : 'active'}`}><a className="page-link"><BsArrowLeft /> Prev</a></li>
+        <li onClick={handlePrevPage} className={`page-item ${currentPage === 1 ? 'disabled' : 'active'}`}><a className="page-link" style={{ cursor: 'pointer' }}><BsArrowLeft /> Prev</a></li>
         <ul className="pagination d-flex gap-2">
           {renderPagination()}
         </ul>
-        <li onClick={handleNextPage} className={`page-item ${currentPage === totalPages ? 'disabled' : 'active'}`}><a className="page-link">Next <BsArrowRight /></a></li>
+        <li onClick={handleNextPage} className={`page-item ${currentPage === totalPages ? 'disabled' : 'active'}`}><a className="page-link" style={{ cursor: 'pointer' }}>Next <BsArrowRight /></a></li>
       </ul>
     </>
   )

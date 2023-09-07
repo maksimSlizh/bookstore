@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom'
 export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
   const [isActive, setIsActive] = useState(true)
 
   function handleLinkClick() {
@@ -28,8 +27,8 @@ export function SignIn() {
   return (
     <div className="auth">
       <div className="auth__item">
-      <NavLink
-          className={`auth__link ${isActive ? "active" : ""}`}
+        <NavLink
+          className={`auth__link ${isActive ? "auth__active" : ""}`}
           to={'/signin'}
           onClick={handleLinkClick}
         >

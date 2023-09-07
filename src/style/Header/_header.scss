@@ -23,6 +23,10 @@
     align-items: center;
     gap: 30px;
 
+    &-icon {
+      color: #313037;
+    }
+
     @media (max-width: 991px) {
       display: none;
     }
@@ -50,3 +54,14 @@
     margin: 0 0 0 auto;
   }
 }
+
+.header__nav-icon:hover {
+  color: #aac60c;
+  transition: color 0.3s ease;
+}
+
+.header__nav-icon:active {
+  color: #5b6a05;
+  transition: color 0.3s ease;
+}
+

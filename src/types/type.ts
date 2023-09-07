@@ -17,3 +17,7 @@ export type PropsCardL = {
 export type PropsBooksArray = {
   data: Book[]
 }
+
+export type CardProps = {
+  data: Book
+}
