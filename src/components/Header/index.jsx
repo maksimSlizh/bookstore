@@ -8,7 +8,7 @@ import { Menu } from '../Menu'
 export function Header() {
   return (
     <>
-      <header className="header mt-3">
+      <header className="header">
         <h1 className="header__title">Bookstore</h1>
         <div className="header__search">
           <Search />

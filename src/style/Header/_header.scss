@@ -1,17 +1,23 @@
 .header {
   max-width: 1200px;
   width: 100%;
-
+  padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 15px;
   border-bottom: 1px solid #E7E7E7;
+  background-color: #ffff;
+  position: fixed;
+  top: 0;
+  z-index: 2;
 
   &__title {
+    margin: 0;
     text-transform: uppercase;
     font-family: 'Bebas Neue', sans-serif;
   }
+
   &__search {
     max-width: 524px;
     width: 100%;
@@ -50,7 +56,9 @@
     display: none;
 
     @media (max-width: 991px) {
+
       display: block;
+      margin: auto 30px auto auto;
     }
   }
 
@@ -69,3 +77,10 @@
   transition: color 0.3s ease;
 }
 
+
+@media (max-width: 991px) {
+  .header {
+    max-width: 991px;
+    width: 100%;
+  }
+}
