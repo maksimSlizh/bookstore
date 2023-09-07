@@ -3,16 +3,17 @@ import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../../../redux/cartSlice'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
+import { PropsCardL } from '../../../types/type'
 
-export function CardL({ data, onUpdatePrice }) {
+export function CardL({ data, onUpdatePrice }: PropsCardL) {
   const color = data.isbn13.slice(-6)
   const dispatch = useDispatch()
   const [count, setCount] = useState(1)
-  const price = parseFloat(data.price.substring(1)) * count
+  const price: number = parseFloat(data.price.substring(1)) * count
   const [value, setValue] = useState(data.price.substring(1))
 
   useEffect(() => {
-    setValue(price)
+    setValue(price.toString())
   }, [price])
   const handleRemoveFromBasket = () => {
     dispatch(removeFromCart(data))
@@ -22,12 +23,12 @@ export function CardL({ data, onUpdatePrice }) {
     if (count <= 1) return
     setCount((prevCount) => prevCount - 1)
     onUpdatePrice(-parseFloat(data.price.substring(1)))
-  };
+  }
 
   const handlePlus = () => {
     setCount((prevCount) => prevCount + 1)
     onUpdatePrice(parseFloat(data.price.substring(1)));
-  };
+  }
 
   return (
     <div className="cards">

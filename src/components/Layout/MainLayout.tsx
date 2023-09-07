@@ -1,7 +1,9 @@
+import React from 'react'
 import { CardMd } from '../Cards/CardMd'
-import { Book, BooksState } from '../../types/interfaces'
+import { Book} from '../../types/interfaces'
+import { PropsBooksArray } from '../../types/type'
 
-export function MainLayout({ data }: BooksState) {
+export function MainLayout({ data }: PropsBooksArray) {
   function renderCards() {
     return data.map((books: Book) => (
         <CardMd key={books.isbn13} book={books} />

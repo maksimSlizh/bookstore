@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
+import { RatingProps } from '../../types/type'
 
-export function Rating({ rating, isbn13 }: { rating: string, isbn13: string }) {
+export function Rating({ rating = '4', isbn13 }: RatingProps) {
   const [selectedRating, setSelectedRating] = useState(parseInt(rating))
   const id = isbn13 + '1'
   const id2 = isbn13 + '2'

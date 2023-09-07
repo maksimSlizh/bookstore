@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Book } from '../../types/interfaces'
+import { Book, RootState } from '../../types/interfaces'
 import style from './card.module.css'
 import { MdFavoriteBorder } from 'react-icons/md'
 import { HiArrowLongLeft } from 'react-icons/hi2'
@@ -12,8 +12,8 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import { NavLink } from 'react-router-dom'
 
 export function Card({ data }: Book) {
-  const favoriteData = useSelector((state) => state.favorite)
-  const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
+  const favoriteData = useSelector((state: RootState) => state.favorite)
+  const isFavorite = favoriteData.some((book: Book) => book.isbn13 === data.isbn13)
   const dispatch = useDispatch()
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState('1')
@@ -37,7 +37,7 @@ export function Card({ data }: Book) {
     setDetailsOpen(!detailsOpen)
   }
 
-  const handleCardChange = (e) => {
+  const handleCardChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedCard(e.target.value)
   }
 
