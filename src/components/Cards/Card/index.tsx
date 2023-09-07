@@ -47,7 +47,7 @@ export function Card({ data }: CardProps) {
       <NavLink className={style.card__link_back} to={`/`}><HiArrowLongLeft size={30} style={{ transform: "scale(1.5)", marginLeft: "5px" }} /></NavLink>
       <h1 className={style.card__title}>{data.title}</h1>
       <div className={style.card__wrapper}>
-        <div className="col-6 position-relative" style={{ background: `#${color}` }} >
+        <div className={style.card__preview + ` col-6 position-relative`} style={{ background: `#${color}` }} >
           <div className={style["icon-wrapper"]}>
             <input className={style["icon-like"]} type="checkbox" checked={isFavorite} onChange={handleFavoriteToggle} id={`favorite-${data.id}`} />
             <label className={style["custom-icon"]} htmlFor={`favorite-${data.id}`}>
@@ -56,7 +56,7 @@ export function Card({ data }: CardProps) {
           </div>
           <img className={style.card__img} src={data.image} alt={data.title} />
         </div>
-        <div className="col-5 d-flex flex-column justify-content-between">
+        <div className={style.card__preview + ` col-5 d-flex flex-column justify-content-between`}>
           <div className={style.card__info}>
             <div className={style.card__value}>
               <div className={style.card__price}>{data.price}</div>
@@ -65,7 +65,7 @@ export function Card({ data }: CardProps) {
             <div className={style.card__feature}>
               <div className={style.card__feature_item}>
                 <span className={style.card__feature_name}>Author</span>
-                <span className="text-end">{data.authors}</span>
+                <span className={style.card__feature_text + ` text-end`}>{data.authors}</span>
               </div>
               <div className={style.card__feature_item}>
                 <span className={style.card__feature_name}>Publisher</span>

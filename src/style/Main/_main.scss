@@ -4,4 +4,17 @@
   gap: 30px;
   padding-bottom: 30px;
   border-bottom: 1px solid #E7E7E7;
+
+  @media (max-width: 1170px) {
+    gap: 5px;
+  }
+
+  @media (max-width: 1115px) {
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+  }
+
+  @media (max-width: 740px) {
+    grid-template-columns: 1fr;
+  }
 }

@@ -31,26 +31,32 @@ export function CardL({ data, onUpdatePrice }: PropsCardL) {
   }
 
   return (
-    <div className="cards">
-      <div className="col-3 d-flex justify-content-center align-items-center" style={{ maxWidth: '256px', maxHeight: '192px', background: `#${color}` }}>
+    <div className="cards cards__cart">
+      <div className="cards__cart-img col-3 d-flex justify-content-center align-items-center" style={{ background: `#${color}` }}>
         <img src={data.image} className="cards__img" alt="" />
+        <RxCross1 size={24} onClick={handleRemoveFromBasket} className="cards__close-hidden" />
       </div>
-      <div className="col-6">
+      <div className="cards__cart-body col-6">
         <div className="mt-3 ms-4" >
           <h3 className="cards__title">{data.title}</h3>
           <p className="cards__info">{data.authors} {data.publisher}</p>
-          <div className="cards__count">
-            <AiOutlineMinus size={24} className="text-dark" onClick={handleMinus} />
-            <span className="cards__count-value">{count}</span>
-            <AiOutlinePlus size={24} className="text-dark" onClick={handlePlus} />
+          <div className="cards__count-wrapper">
+            <div className="cards__count">
+              <AiOutlineMinus size={24} className="text-dark" onClick={handleMinus} />
+              <span className="cards__count-value">{count}</span>
+              <AiOutlinePlus size={24} className="text-dark" onClick={handlePlus} />
+            </div>
+            <h2 className="cards__price-cart cards__price-hidden">${value}</h2>
           </div>
         </div>
       </div>
-      <div className="col-1 mt-auto mb-auto d-flex justify-content-start">
-        <h2 className="cards__price-cart">${value}</h2>
-      </div>
-      <div className="col-2 mt-auto mb-auto d-flex justify-content-end">
-        <RxCross1 size={24} onClick={handleRemoveFromBasket} />
+      <div className="cards__cart-wrapper col-3">
+        <div className="cards__item col-1 mt-auto mb-auto d-flex justify-content-start">
+          <h2 className="cards__price-cart">${value}</h2>
+        </div>
+        <div className="cards__item col-2 mt-auto mb-auto d-flex justify-content-end">
+          <RxCross1 size={24} onClick={handleRemoveFromBasket} />
+        </div>
       </div>
     </div>
   )

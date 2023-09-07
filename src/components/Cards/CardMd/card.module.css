@@ -49,3 +49,9 @@
   color: #313037;
 }
 
+@media (max-width: 1115px) {
+  .card {
+    margin: 0 auto 30px;
+  }
+}
+
