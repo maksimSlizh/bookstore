@@ -39,11 +39,27 @@ export interface BooksState {
 }
 
 export interface RootState {
-  books: BooksState
+  book: {
+    loading: boolean,
+    error: null | Error,
+    data: Book[]
+  },
+  books: {
+    loading: boolean,
+    error: null | string,
+    data: Book[]
+  },
+  booksSearch: {
+    loading: boolean,
+    error: null | string,
+    page?: number,
+    total?: number,
+    data: Book[]
+  },
+  cart: Book[],
+  favorite: Book[]
 }
 
 export interface Pdf {
   [key: string]: string
 }
-
-// export { Book, BooksResponse, BooksState, RootState }

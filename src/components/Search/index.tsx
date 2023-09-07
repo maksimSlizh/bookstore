@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { BiSearch } from 'react-icons/bi'
 
@@ -6,10 +6,10 @@ export function Search() {
   const navigate = useNavigate()
   const [books, setBooks] = useState('')
 
-  function handleChange(e) {
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     setBooks(e.target.value)
   }
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     navigate(`/search/${books}/1`)
     setBooks('')

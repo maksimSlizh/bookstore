@@ -5,19 +5,18 @@ export function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(true)
 
   function handleLinkClick() {
-    setIsActive(!isActive);
+    setIsActive(!isActive)
   }
-
-  function handleChangeEmail(e) {
+  function handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value)
   }
-  function handleChangePassword(e) {
+  function handleChangePassword(e: React.ChangeEvent<HTMLInputElement>) {
     setPassword(e.target.value)
   }
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = new FormData()
     form.append('email', email)

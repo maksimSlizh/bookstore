@@ -8,20 +8,20 @@ export function Account() {
   const [password, setPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
 
-  function handleChangeName(e) {
+  function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value)
   }
-  function handleChangeEmail(e) {
+  function handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value)
   }
-  function handleChangePassword(e) {
+  function handleChangePassword(e: React.ChangeEvent<HTMLInputElement>) {
     setPassword(e.target.value)
   }
-  function handleChangeNewPassword(e) {
+  function handleChangeNewPassword(e: React.ChangeEvent<HTMLInputElement>) {
     setNewPassword(e.target.value)
   }
 
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = new FormData()
     form.append('name', name)

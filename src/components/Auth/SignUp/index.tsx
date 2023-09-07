@@ -6,16 +6,16 @@ export function SignUp() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  function handleChangeName(e) {
+  function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {
     setName(e.target.value)
   }
-  function handleChangeEmail(e) {
+  function handleChangeEmail(e: React.ChangeEvent<HTMLInputElement>) {
     setEmail(e.target.value)
   }
-  function handleChangePassword(e) {
+  function handleChangePassword(e: React.ChangeEvent<HTMLInputElement>) {
     setPassword(e.target.value)
   }
-  function handleSubmit(e) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const form = new FormData()
     form.append('name', name)

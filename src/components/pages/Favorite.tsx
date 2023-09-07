@@ -1,11 +1,12 @@
-import { useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
-import { FavoriteLayout } from '../Layout/FavoriteLayout'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { FavoriteLayout } from '../Layout/FavoriteLayout'
 import { HiArrowLongLeft } from 'react-icons/hi2'
+import { RootState } from '../../types/interfaces'
 
 export function Favorite() {
-  const data = useSelector((state) => state.favorite)
+  const data = useSelector((state: RootState) => state.favorite)
   const [favoriteData, setFavoriteData] = useState([])
 
   useEffect(() => {

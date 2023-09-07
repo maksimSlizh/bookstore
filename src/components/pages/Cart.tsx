@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { CardL } from '../Cards/CardL/index'
 import { HiArrowLongLeft } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
+import { RootState, Book } from '../../types/interfaces'
 
 export function Cart() {
-  const data = useSelector((state) => state.cart)
-  const [basketData, setBasketData] = useState([])
-  const [totalPrice, setTotalPrice] = useState(0)
+  const data = useSelector((state: RootState) => state.cart)
+  const [basketData, setBasketData] = useState<Book[]>([])
+  const [totalPrice, setTotalPrice] = useState("0")
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('cart')!)
@@ -25,55 +26,56 @@ export function Cart() {
       return sum.toFixed(2)
     }
 
-    const updatedTotalPrice = calculateTotalPrice()
+    const updatedTotalPrice = parseFloat(calculateTotalPrice()).toString()
     setTotalPrice(updatedTotalPrice)
   }, [basketData])
 
-  const updatePrice = (amount) => {
-    setTotalPrice((prevPrice) => parseFloat(prevPrice) + amount);
+  const updatePrice = (amount: number) => {
+    setTotalPrice((prevPrice) => (parseFloat(prevPrice) + amount).toString())
   }
 
   function renderCards() {
-    return data.map((books: Books) => (
+    return data.map((books: Book) => (
       <CardL key={books.isbn13} data={books} onUpdatePrice={updatePrice} />
-    ))}
+    ))
+  }
 
-    function handleSubmit(e) {
-      e.preventDefault()
-      const vat = (totalPrice * 0.18).toFixed(2)
-      const total = (totalPrice * 1.18).toFixed(2)
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const vat = (Number(totalPrice) * 0.18).toFixed(2)
+    const total = (Number(totalPrice) * 1.18).toFixed(2)
 
-      const form = {
-        totalPrice,
-        vat,
-        total
-      }
+    const form = {
+      totalPrice,
+      vat,
+      total
     }
+  }
 
-    return (
-      <>
-        <NavLink to={`/`}><HiArrowLongLeft size={30} style={{ transform: "scale(1.5)", marginLeft: "5px", textDecoration: "none", color: "#313037", marginTop: "40px" }} /></NavLink>
-        <h1 className="title">Basket</h1>
-        <div className="d-flex flex-column">
-          {renderCards()}
-        </div>
-        <div className="cart mt-5 mb-5">
-          <form onSubmit={handleSubmit}>
+  return (
+    <>
+      <NavLink to={'/'}><HiArrowLongLeft size={30} style={{ transform: "scale(1.5)", marginLeft: "5px", textDecoration: "none", color: "#313037", marginTop: "40px" }} /></NavLink>
+      <h1 className="title">Basket</h1>
+      <div className="d-flex flex-column">
+        {renderCards()}
+      </div>
+      <div className="cart mt-5 mb-5">
+        <form onSubmit={handleSubmit}>
           <div className="cart__item">
             <p className="cart__item-text">Sum total</p>
             <p className="cart__item-value">{totalPrice}</p>
           </div>
           <div className="cart__item">
             <p className="cart__item-text">Vat</p>
-            <p className="cart__item-value">{(totalPrice * 0.18).toFixed(2)}</p>
+            <p className="cart__item-value">{(Number(totalPrice) * 0.18).toFixed(2)}</p>
           </div>
           <div className="cart__item">
             <p className="cart__item-total">Total</p>
-            <p className="cart__item-total">{(totalPrice * 1.18).toFixed(2)}</p>
+            <p className="cart__item-total">{(Number(totalPrice) * 1.18).toFixed(2)}</p>
           </div>
           <button className="cart__button">Check out</button>
-          </form>
-        </div>
-      </>
-    )
-  }
+        </form>
+      </div>
+    </>
+  )
+}
