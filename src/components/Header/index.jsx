@@ -3,6 +3,7 @@ import { Search } from '../Search/index'
 import { GrFavorite } from 'react-icons/gr'
 import { SlBasket } from 'react-icons/sl'
 import { AiOutlineUser } from 'react-icons/ai'
+import { Menu } from '../Menu'
 
 export function Header() {
   return (
@@ -17,6 +18,10 @@ export function Header() {
           <NavLink to="/cart"><SlBasket size={24} className="text-dark" /></NavLink>
           <NavLink to="/signin"><AiOutlineUser size={24} className="text-dark" /></NavLink>
         </nav>
+
+        <div className="header__menu">
+          <Menu />
+        </div>
       </header>
     </>
   )
