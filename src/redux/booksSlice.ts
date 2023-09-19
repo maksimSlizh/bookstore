@@ -37,7 +37,7 @@ const booksSlice = createSlice({
   },
 })
 
-export const GET_BOOKS = 'books/GET_BOOKS'
+export const GET_BOOKS = 'books/getBooks'
 export const getBooks = createAction<number>(GET_BOOKS)
 
 export const { setLoading, getBooksSuccess, setError } = booksSlice.actions

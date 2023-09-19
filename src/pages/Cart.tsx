@@ -1,20 +1,20 @@
 import { useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
-import { CardL } from '../Cards/CardL/index'
+import { CardL } from '../components/Cards/CardL/index'
 import { HiArrowLongLeft } from 'react-icons/hi2'
 import { NavLink } from 'react-router-dom'
-import { RootState, Book } from '../../types/interfaces'
+import { RootState, Book } from '../types/interfaces'
+import { getDataLocalStorage } from '../helpers'
 
 export function Cart() {
-  const data = useSelector((state: RootState) => state.cart)
+  const { dataLocal: data } = useSelector((state: RootState) => state.book)
+  const dataIsCart = data.filter((book) => book.isCart === true)
   const [basketData, setBasketData] = useState<Book[]>([])
   const [totalPrice, setTotalPrice] = useState("0")
+  console.log(totalPrice)
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem('cart')!)
-    if (storedData) {
-      setBasketData(storedData)
-    }
+    setBasketData(dataIsCart)
   }, [data])
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export function Cart() {
   }
 
   function renderCards() {
-    return data.map((books: Book) => (
+    return dataIsCart.map((books: Book) => (
       <CardL key={books.isbn13} data={books} onUpdatePrice={updatePrice} />
     ))
   }

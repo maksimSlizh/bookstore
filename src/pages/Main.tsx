@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { ThunkDispatch } from 'redux-thunk'
-import { getBooks } from '../../redux/booksSlice'
-import { MainLayout } from '../Layout/MainLayout'
-import { RootState, Book } from '../../types/interfaces'
+import { getBooks } from '../redux/booksSlice'
+import { MainLayout } from '../components/Layout/MainLayout'
+import { RootState, Book } from '../types/interfaces'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 export function Main() {

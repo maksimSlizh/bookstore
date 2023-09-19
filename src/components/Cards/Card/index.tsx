@@ -7,31 +7,26 @@ import style from './card.module.css'
 import { MdFavoriteBorder } from 'react-icons/md'
 import { HiArrowLongLeft } from 'react-icons/hi2'
 import { FiFacebook, FiTwitter, FiMoreHorizontal } from 'react-icons/fi'
-import { addToCart } from '../../../redux/cartSlice'
-import { addToFavorite, removeFromFavorite } from '../../../redux/favoriteSlice'
+import { changeFavorite, changeCart } from '../../../redux/bookSlice'
 import { Rating } from '../../Rating'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 
 export function Card({ data }: CardProps) {
-  const favoriteData = useSelector((state: RootState) => state.favorite)
-  const isFavorite = favoriteData.some((book) => book.isbn13 === data.isbn13)
+  const { dataLocal } = useSelector((state: RootState) => state.book)
+  const dataInLocal = dataLocal.find((book) => book.isbn13 === data.isbn13)
   const dispatch = useDispatch()
   const [detailsOpen, setDetailsOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState('1')
 
   const color = data.isbn13 ? data.isbn13.slice(-6) : '000'
-  const colorIcon = isFavorite ? '' : 'text-light'
+  const colorIcon = dataInLocal && dataInLocal.isFavorite ? 'text-danger' : 'text-light'
 
   const handleFavoriteToggle = () => {
-    if (isFavorite) {
-      dispatch(removeFromFavorite(data))
-    } else {
-      dispatch(addToFavorite(data))
-    }
+    dispatch(changeFavorite(data))
   }
 
   const handleAddToBasket = () => {
-    dispatch(addToCart(data))
+    dispatch(changeCart(data))
   }
 
   const handleToggleDetails = () => {
@@ -49,9 +44,9 @@ export function Card({ data }: CardProps) {
       <div className={style.card__wrapper}>
         <div className={style.card__preview + ` col-6 position-relative`} style={{ background: `#${color}` }} >
           <div className={style["icon-wrapper"]}>
-            <input className={style["icon-like"]} type="checkbox" checked={isFavorite} onChange={handleFavoriteToggle} id={`favorite-${data.id}`} />
+            <input className={style["icon-like"]} type="checkbox"  onChange={handleFavoriteToggle} id={`favorite-${data.id}`} />
             <label className={style["custom-icon"]} htmlFor={`favorite-${data.id}`}>
-              <MdFavoriteBorder size={20} className={colorIcon} />
+              <MdFavoriteBorder size={20} className={colorIcon}  />
             </label>
           </div>
           <img className={style.card__img} src={data.image} alt={data.title} />

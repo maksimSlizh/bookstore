@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { removeFromCart } from '../../../redux/cartSlice'
+import { changeCart } from '../../../redux/bookSlice'
 import { AiOutlineMinus, AiOutlinePlus } from 'react-icons/ai'
 import { RxCross1 } from 'react-icons/rx'
 import { PropsCardL } from '../../../types/type'
@@ -16,7 +16,7 @@ export function CardL({ data, onUpdatePrice }: PropsCardL) {
     setValue(price.toString())
   }, [price])
   const handleRemoveFromBasket = () => {
-    dispatch(removeFromCart(data))
+    dispatch(changeCart(data))
   }
 
   const handleMinus = () => {

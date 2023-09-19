@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { removeFromFavorite } from '../../../redux/favoriteSlice'
+import { changeFavorite } from '../../../redux/bookSlice'
 import { Rating } from '../../Rating'
 import { FcLike } from 'react-icons/fc'
 import { PropsFavorite } from '../../../types/type'
@@ -10,7 +10,7 @@ export function CardFavorite({ data }: PropsFavorite) {
   const color = data.isbn13.slice(-6)
   const dispatch = useDispatch()
   const handleRemoveFromFavorite = () => {
-    dispatch(removeFromFavorite(data))
+    dispatch(changeFavorite(data))
   }
   return (
     <div className="cards">

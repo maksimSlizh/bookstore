@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { FavoriteLayout } from '../Layout/FavoriteLayout'
+import { FavoriteLayout } from '../components/Layout/FavoriteLayout'
 import { HiArrowLongLeft } from 'react-icons/hi2'
-import { RootState } from '../../types/interfaces'
+import { RootState } from '../types/interfaces'
 
 export function Favorite() {
-  const data = useSelector((state: RootState) => state.favorite)
+  const { dataLocal: data } = useSelector((state: RootState) => state.book)
+  const dataIsFavorite = data.filter((book) => book.isFavorite === true)
   const [favoriteData, setFavoriteData] = useState([])
 
   useEffect(() => {
-    const storedData = JSON.parse(localStorage.getItem("favorite")!)
-    if (storedData) {
-      setFavoriteData(storedData)
-    }
+    setFavoriteData(dataIsFavorite)
   }, [data])
   return (
     <>

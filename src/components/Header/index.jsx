@@ -9,7 +9,7 @@ export function Header() {
   return (
     <>
       <header className="header">
-        <h1 className="header__title">Bookstore</h1>
+        <NavLink to="/" className="header__logo"><h1 className="header__title">Bookstore</h1></NavLink>
         <div className="header__search">
           <Search />
         </div>
