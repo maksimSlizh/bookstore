@@ -29,12 +29,12 @@ export function SignIn() {
       <div className="auth__item">
         <NavLink
           className={`auth__link ${isActive ? "auth__active" : ""}`}
-          to={'/signin'}
+          to={'/auth/signin'}
           onClick={handleLinkClick}
         >
           Sing In
         </NavLink>
-        <NavLink className={"auth__link"} to={'/signup'}>Sing Up</NavLink>
+        <NavLink className={"auth__link"} to={'/auth/signup'}>Sing Up</NavLink>
       </div>
       <div className="auth__body">
         <form className="form d-flex flex-column" onSubmit={handleSubmit}>

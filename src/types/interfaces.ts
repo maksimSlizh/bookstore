@@ -15,6 +15,8 @@ export interface Book {
   image: string
   url: string
   pdf?: Pdf
+  isFavorite?: boolean
+  isCart?: boolean
 }
 
 export interface BooksResponse {
@@ -27,7 +29,9 @@ export interface BooksResponse {
 export interface BookState {
   loading: boolean
   error: Error | null
-  data: Book | []
+  data: Book | {}
+  dataLocal: Book[]
+  dataLocalLoaded: boolean
 }
 
 export interface BooksState {
@@ -43,6 +47,8 @@ export interface RootState {
     loading: boolean,
     error: null | Error,
     data: Book
+    dataLocal: Book[]
+    dataLocalLoaded: boolean
   },
   books: {
     loading: boolean,
@@ -56,8 +62,6 @@ export interface RootState {
     total?: number,
     data: Book[]
   },
-  cart: Book[],
-  favorite: Book[]
 }
 
 export interface Pdf {

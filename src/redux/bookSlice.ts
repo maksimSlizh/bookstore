@@ -3,10 +3,7 @@ import { requestBook } from '../services/books'
 import { BookState, Book } from '../types/interfaces'
 import { getDataLocalStorage, setDataLocalStorage } from '../helpers'
 
-const fetchBook = createAsyncThunk<Book, string>('book/fetchBook', async (isbn13: string) => {
-  const data = await requestBook(isbn13)
-  return { ...data }
-})
+const fetchBook = createAsyncThunk<Book, string>('book/fetchBook', async (isbn13: string) => await requestBook(isbn13))
 
 const initialState: BookState = {
   loading: false,

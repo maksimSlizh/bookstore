@@ -34,10 +34,10 @@ export function SignUp() {
   return (
     <div className="auth">
       <div className="auth__item">
-        <NavLink to={'/signin'} className={"auth__link"}>Sing In</NavLink>
+        <NavLink to={'/auth/signin'} className={"auth__link"}>Sing In</NavLink>
         <NavLink
           className={`auth__link ${isActive ? "auth__active" : ""}`}
-          to={'/signup'}
+          to={'/auth/signup'}
           onClick={handleLinkClick}
         >
           Sing Up

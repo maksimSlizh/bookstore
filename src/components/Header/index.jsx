@@ -16,7 +16,7 @@ export function Header() {
         <nav className="header__nav">
           <NavLink to="/favorite"><MdFavoriteBorder size={24} className="header__nav-icon" /></NavLink>
           <NavLink to="/cart"><SlBasket size={24} className="header__nav-icon" /></NavLink>
-          <NavLink to="/signin"><AiOutlineUser size={24} className="header__nav-icon" /></NavLink>
+          <NavLink to="/auth/signin"><AiOutlineUser size={24} className="header__nav-icon" /></NavLink>
         </nav>
 
         <div className="header__menu">

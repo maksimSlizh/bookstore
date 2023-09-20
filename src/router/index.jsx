@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import { Layout } from '../components/Layout/index'
 import { Main } from '../pages/Main'
 import { ResultSearch } from '../pages/ResultSearch'
@@ -35,19 +35,24 @@ export const router = createBrowserRouter([
         element: <Favorite />
       },
       {
+        path: '/auth',
         element: <Auth />,
         children: [
           {
-            path: '/account',
+            path: '/auth/account',
             element: <Account />
           },
           {
-            path: '/signin',
+            path: '/auth/signin',
             element: <SignIn />
           },
           {
-            path: '/signup',
+            path: '/auth/signup',
             element: <SignUp />
+          },
+          {
+            path: '/auth',
+            element: <Navigate to="/auth/signin" />
           }
         ]
       }
