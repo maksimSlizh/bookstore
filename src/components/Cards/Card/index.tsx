@@ -44,8 +44,8 @@ export function Card({ data }: CardProps) {
       <div className={style.card__wrapper}>
         <div className={style.card__preview + ` col-6 position-relative`} style={{ background: `#${color}` }} >
           <div className={style["icon-wrapper"]}>
-            <input className={style["icon-like"]} type="checkbox"  onChange={handleFavoriteToggle} id={`favorite-${data.id}`} />
-            <label className={style["custom-icon"]} htmlFor={`favorite-${data.id}`}>
+            <input className={style["icon-like"]} type="checkbox"  onChange={handleFavoriteToggle} id={`favorite-${data.isbn13}`} />
+            <label className={style["custom-icon"]} htmlFor={`favorite-${data.isbn13}`}>
               <MdFavoriteBorder size={20} className={colorIcon}  />
             </label>
           </div>

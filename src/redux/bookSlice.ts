@@ -22,8 +22,8 @@ const bookSlice = createSlice<BookState, SliceCaseReducers<BookState>>({
       const existingBook = state.dataLocal.find((item: Book) => item.isbn13 === book.isbn13)
       if (existingBook) {
         existingBook.isFavorite = !existingBook.isFavorite
-        if ((existingBook.isFavorite === false && !existingBook.hasOwnProperty('isCart')) ||
-          (existingBook.isFavorite === false && existingBook.hasOwnProperty('isCart') && existingBook.isCart === false)) {
+        if ((existingBook.isFavorite === false && !existingBook.hasOwnProperty('isCart'))
+           || (existingBook.isFavorite === false && existingBook.hasOwnProperty('isCart') && existingBook.isCart === false)) {
           const existingBookIndex = state.dataLocal.findIndex((item: Book) => item.isbn13 === book.isbn13)
           state.dataLocal.splice(existingBookIndex, 1)
         }
@@ -43,8 +43,8 @@ const bookSlice = createSlice<BookState, SliceCaseReducers<BookState>>({
       const existingBook = state.dataLocal.find((item: Book) => item.isbn13 === book.isbn13)
       if (existingBook) {
         existingBook.isCart = !existingBook.isCart
-        if ((existingBook.isCart === false && !existingBook.hasOwnProperty('isFavorite')) ||
-          (existingBook.isCart === false && existingBook.hasOwnProperty('isFavorite') && existingBook.isFavorite === false)) {
+        if ((existingBook.isCart === false && !existingBook.hasOwnProperty('isFavorite'))
+           || (existingBook.isCart === false && existingBook.hasOwnProperty('isFavorite') && existingBook.isFavorite === false)) {
           const existingBookIndex = state.dataLocal.findIndex((item: Book) => item.isbn13 === book.isbn13)
           state.dataLocal.splice(existingBookIndex, 1)
         }
@@ -52,13 +52,20 @@ const bookSlice = createSlice<BookState, SliceCaseReducers<BookState>>({
         const newBook = {
           ...book,
           isCart: true,
-        };
+        }
         state.dataLocal.push(newBook)
       }
       if (state.dataLocalLoaded) {
         setDataLocalStorage('book', state.dataLocal)
       }
     },
+    changeCount: (state, action: PayloadAction<Book>) => {
+      const book = action.payload
+      const existingBook = state.dataLocal.find((item: Book) => item.isbn13 === book.isbn13)
+      if (existingBook) {
+
+      }
+    }
   },
   extraReducers: (builder) => {
     builder

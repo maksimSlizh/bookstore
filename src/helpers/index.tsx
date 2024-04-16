@@ -1,4 +1,6 @@
-export function setDataLocalStorage(key: string, data: any) {
+import { Book } from '../types/interfaces'
+
+export function setDataLocalStorage(key: string, data: Book[]) {
   localStorage.setItem(key, JSON.stringify(data))
 }
 
